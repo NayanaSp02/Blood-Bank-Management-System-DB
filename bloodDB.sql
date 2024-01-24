@@ -132,3 +132,5 @@ INSERT INTO BLOODBANK_MANAGER3 VALUES (108, 'GURU', 'NOP@GMAIL.COM',    91234567
 
 
 SELECT *FROM BLOODBANK_MANAGER3;
+
+alter table receptionist3 add foreign key(bno) references bloodbank3(bno) on delete cascade; 
