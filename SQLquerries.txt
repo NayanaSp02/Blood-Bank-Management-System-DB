@@ -1,0 +1,70 @@
+
+1)
+SELECT DID, NAMES ,ADDRESSS, SEX
+FROM DONOR2
+WHERE SEX='F';
+
+
+2)Display the hospital3 table in ascending order  based on hospital name.
+
+   select * from HOSPITAL3
+   order by names;
+
+
+3)SELECT cost,bloodtype
+FROM blood3
+WHERE bloodtype = 'A+';
+
+
+4) SELECT DID, NAMES, AGE, ADDRESSS
+FROM DONOR2
+WHERE Addresss='DUBAI';
+
+5) SELECT BNO ,BB_BLOODTYPE
+   FROM BLOODBANK3
+   WHERE B_CODE=404;
+
+6) SELECT EMP_ID, NAME, ADDRESSS
+ FROM RECEPTIONIST3 
+ WHERE BNO=605;
+
+ 7) SELECT NAMES, ADDRESS
+    FROM HOSPITAL3
+	WHERE BLOODTYPE='A+';
+
+8)SELECT NAMES,EMAIL_ID
+   FROM BLOODBANK_MANAGER3
+   WHERE EMP_ID=108;
+
+9) SELECT NAMES, ADDRESSS, BLOODTYPE
+    FROM DONOR2, BLOOD3
+	WHERE DID=B_DID;
+
+10) SELECT D.NAMES, D.ADDRESSS, D.PHNO
+    FROM DONOR2 D, RECEPTIONIST3 R
+	WHERE D.DID=R.DID; 
+
+
+	update RECEPTIONIST3 set bno=null where bno=601;
+
+11)Retrive the name and email_id of receptionist who works on atleast one bloodbank
+
+   select r.emp_id,r.name
+	from RECEPTIONIST3 r
+	where exists
+	(select * from bloodbank3 b
+	where b.bno=r.bno);
+
+12)Retrive the name and email_id of receptionist who does not works for any  bloodbank	
+     
+	 select r.emp_id,r.name
+	from RECEPTIONIST3 r
+	where not exists
+	(select * from bloodbank3 b
+	where b.bno=r.bno);
+
+13) retrieve the donor details who donated 'A+' blood by using join 
+    
+	select d.* from  donor2 d join blood3 b
+	on did=b_did
+	where b.bloodtype='A+';
